@@ -1,0 +1,69 @@
+name: CouplesMVP
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: "17.0"
+configs:
+  Debug: debug
+  Release: release
+configFiles:
+  Debug: Config/Secrets.xcconfig
+  Release: Config/Secrets.xcconfig
+settingGroups:
+  sharedSecrets:
+    SUPABASE_URL: ""
+    SUPABASE_ANON_KEY: ""
+targets:
+  CouplesMVP:
+    type: application
+    platform: iOS
+    sources:
+      - App
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: CouplesMVP
+        UILaunchScreen: {}
+        SUPABASE_URL: $(SUPABASE_URL)
+        SUPABASE_ANON_KEY: $(SUPABASE_ANON_KEY)
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+    entitlements:
+      path: App/CouplesMVP.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.example.couples
+    dependencies:
+      - package: supabase-swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.couplesmvp
+        TARGETED_DEVICE_FAMILY: "1,2"
+      groups:
+        - sharedSecrets
+
+  PartnerMomentWidgetExtension:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Widget
+      - App/Models
+    info:
+      path: Widget/Info.plist
+      properties:
+        CFBundleDisplayName: PartnerMomentWidget
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    entitlements:
+      path: Widget/PartnerMomentWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.example.couples
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.example.couplesmvp.widget
+        IPHONEOS_DEPLOYMENT_TARGET: "17.0"
+packages:
+  supabase-swift:
+    url: https://github.com/supabase/supabase-swift.git
+    from: 2.0.0
