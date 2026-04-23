@@ -90,6 +90,7 @@ struct PartnerMomentWidgetView: View {
     }
 }
 
+@main
 struct PartnerMomentWidget: Widget {
     let kind: String = "PartnerMomentWidget"
 
