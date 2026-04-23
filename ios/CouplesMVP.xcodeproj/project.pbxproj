@@ -28,7 +28,32 @@
 		BE00D5B92AFDE05AE6153D97 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8068F0452F2998DC05BA729A /* AuthViewModel.swift */; };
 		D06BBD355190E85DDBA7A001 /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636695978DC1CCF10DCAA8D2 /* SupabaseService.swift */; };
 		F6E845D547644830421E3FC0 /* PairingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81A50023EC9CAE1FBEFCB2 /* PairingViewModel.swift */; };
+		596B5AAA70154A71B14AA783 /* PartnerMomentWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E77708400D0987DA6AD91245 /* PartnerMomentWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D4D9480E451C47429E8B0401 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9BE808D665204DF7F1F058C5 /* Project */;
+			proxyType = 1;
+			remoteGlobalIDString = 78769FE5F260E60781A7A532;
+			remoteInfo = PartnerMomentWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EDF537558DC44047AC0CB15D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				596B5AAA70154A71B14AA783 /* PartnerMomentWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1093B7D5C381BFD24B64C67D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -191,10 +216,12 @@
 			buildPhases = (
 				42B853780E6B192BD9101E84 /* Sources */,
 				34DDAB20B06611374C6B3214 /* Frameworks */,
+				EDF537558DC44047AC0CB15D /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3A422E4DDCE24F8EBFF1DAC6 /* PBXTargetDependency */,
 			);
 			name = CouplesMVP;
 			packageProductDependencies = (
@@ -272,6 +299,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3A422E4DDCE24F8EBFF1DAC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 78769FE5F260E60781A7A532 /* PartnerMomentWidgetExtension */;
+			targetProxy = D4D9480E451C47429E8B0401 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3DF9EFDAB925283E0D993ED9 /* Debug */ = {
