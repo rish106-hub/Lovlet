@@ -31,6 +31,14 @@ struct PairingView: View {
             if let error = viewModel.errorMessage {
                 Text(error).foregroundStyle(.red)
             }
+
+#if DEBUG
+            Divider()
+            Button("⚡ Skip — Dev Only") {
+                viewModel.useDummyPair()
+            }
+            .foregroundStyle(.orange)
+#endif
         }
         .padding()
     }

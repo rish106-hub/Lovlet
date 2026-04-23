@@ -6,12 +6,26 @@ import UIKit
 final class SupabaseService: ObservableObject {
     static let shared = SupabaseService()
 
+    enum ServiceError: LocalizedError {
+        case imageCompressionFailed
+
+        var errorDescription: String? {
+            switch self {
+            case .imageCompressionFailed:
+                return "Failed to compress image for upload."
+            }
+        }
+    }
+
     let client: SupabaseClient
 
     private init() {
         client = SupabaseClient(
             supabaseURL: AppConfig.supabaseURL,
-            supabaseKey: AppConfig.supabaseAnonKey
+            supabaseKey: AppConfig.supabaseAnonKey,
+            options: SupabaseClientOptions(
+                auth: .init(emitLocalSessionAsInitialSession: true)
+            )
         )
     }
 
@@ -30,20 +44,20 @@ final class SupabaseService: ObservableObject {
     func ensureUserRow() async throws {
         guard let userID = currentUserID else { return }
         struct UserInsert: Encodable { let id: UUID }
-        try await client.database
+        try await client
             .from("users")
-            .upsert(UserInsert(id: userID), onConflict: "id")
+            .upsert(UserInsert(id: userID), onConflict: "id", ignoreDuplicates: true)
             .execute()
     }
 
     // MARK: - Pairing
     func createPairInviteCode() async throws -> String {
-        let code: String = try await client.database.rpc("create_pair").execute().value
+        let code: String = try await client.rpc("create_pair").execute().value
         return code
     }
 
     func joinPair(inviteCode: String) async throws -> UUID {
-        let pairID: UUID = try await client.database
+        let pairID: UUID = try await client
             .rpc("join_pair", params: ["invite_code": inviteCode])
             .execute()
             .value
@@ -51,11 +65,11 @@ final class SupabaseService: ObservableObject {
     }
 
     func unlinkPair() async throws {
-        _ = try await client.database.rpc("unlink_pair").execute()
+        _ = try await client.rpc("unlink_pair").execute()
     }
 
     func fetchMyPair() async throws -> Pair? {
-        let pairs: [Pair] = try await client.database
+        let pairs: [Pair] = try await client
             .from("pairs")
             .select()
             .limit(1)
@@ -68,21 +82,20 @@ final class SupabaseService: ObservableObject {
     func uploadMoment(image: UIImage, text: String, pairID: UUID) async throws {
         guard currentUserID != nil else { throw URLError(.userAuthenticationRequired) }
         guard let compressed = ImageCompression.compressedJPEGData(image) else {
-            throw URLError(.cannotEncodeContentData)
+            throw ServiceError.imageCompressionFailed
         }
 
         let fileName = "\(pairID.uuidString)/\(UUID().uuidString).jpg"
         try await client.storage
             .from(AppConfig.momentsBucket)
-            .upload(path: fileName, file: compressed, options: .init(contentType: "image/jpeg"))
-        _ = pairID
-        _ = try await client.database
+            .upload(fileName, data: compressed, options: .init(contentType: "image/jpeg"))
+        _ = try await client
             .rpc("upload_moment", params: ["image_path": fileName, "message": text])
             .execute()
     }
 
     func fetchLatestMomentFromPartner(pairID: UUID) async throws -> Moment? {
-        let moments: [Moment] = try await client.database
+        let moments: [Moment] = try await client
             .rpc("fetch_latest_moment", params: ["target_pair_id": pairID.uuidString])
             .execute()
             .value

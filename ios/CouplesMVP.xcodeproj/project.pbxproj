@@ -21,7 +21,7 @@
 		646F91FBEFA42F82D2BCC12D /* WidgetCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85B467951CF6A9F33717307 /* WidgetCacheStore.swift */; };
 		848A7812B748E4EF3DC5DF51 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628D6374D8944F68C6540C91 /* HomeViewModel.swift */; };
 		9002591A597716DD6C8BF18C /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6EE32D28A19A20DB72EE6 /* SharedConstants.swift */; };
-		A1F35F3388F8F38EB1235AA1 /* supabase-swift in Frameworks */ = {isa = PBXBuildFile; productRef = 366295DE229B72E043543D52 /* supabase-swift */; };
+		A1F35F3388F8F38EB1235AA1 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 75E21CC7A3B87A980EBC0057 /* Supabase */; };
 		A9F6BE33B42B51CD06E9BA93 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A2D200C7CF4276D9B0C8E /* RootView.swift */; };
 		B43507467F412409F6CFC80D /* PartnerMomentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51EE2AFCB51AAEC02CA7A7B /* PartnerMomentWidget.swift */; };
 		BE00D5B92AFDE05AE6153D97 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8068F0452F2998DC05BA729A /* AuthViewModel.swift */; };
@@ -48,9 +48,9 @@
 		AE7A2D200C7CF4276D9B0C8E /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		AF81A50023EC9CAE1FBEFCB2 /* PairingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingViewModel.swift; sourceTree = "<group>"; };
 		B92F3F75C2D51AA6AC5D9C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		BA91AD0F247729F631E64A72 /* CouplesMVP.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = CouplesMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA91AD0F247729F631E64A72 /* CouplesMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouplesMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C85B467951CF6A9F33717307 /* WidgetCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetCacheStore.swift; sourceTree = "<group>"; };
-		E77708400D0987DA6AD91245 /* PartnerMomentWidgetExtension.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = PartnerMomentWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E77708400D0987DA6AD91245 /* PartnerMomentWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PartnerMomentWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F03802446AD9178885465B14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		F51EE2AFCB51AAEC02CA7A7B /* PartnerMomentWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerMomentWidget.swift; sourceTree = "<group>"; };
 		FB396B1616AD5A9D694E53F0 /* PartnerMomentWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PartnerMomentWidget.entitlements; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1F35F3388F8F38EB1235AA1 /* supabase-swift in Frameworks */,
+				A1F35F3388F8F38EB1235AA1 /* Supabase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +195,7 @@
 			);
 			name = CouplesMVP;
 			packageProductDependencies = (
-				366295DE229B72E043543D52 /* supabase-swift */,
+				75E21CC7A3B87A980EBC0057 /* Supabase */,
 			);
 			productName = CouplesMVP;
 			productReference = BA91AD0F247729F631E64A72 /* CouplesMVP.app */;
@@ -208,9 +208,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1430;
-				TargetAttributes = {
-				};
+				LastUpgradeCheck = 2630;
 			};
 			buildConfigurationList = B9CC9F91FB43CFD1EF8CB4DF /* Build configuration list for PBXProject "CouplesMVP" */;
 			developmentRegion = en;
@@ -327,6 +325,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -340,6 +339,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -384,6 +384,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -404,6 +405,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -412,10 +414,11 @@
 		};
 		7C71F8EF9A432610A31046D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64009253953F6D2D7F63248E /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/CouplesMVP.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -423,8 +426,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.couplesmvp;
 				SDKROOT = iphoneos;
-				SUPABASE_ANON_KEY = "";
-				SUPABASE_URL = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -448,10 +449,11 @@
 		};
 		F44D4E99FB6E1F1A63CE87D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64009253953F6D2D7F63248E /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/CouplesMVP.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -459,8 +461,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.couplesmvp;
 				SDKROOT = iphoneos;
-				SUPABASE_ANON_KEY = "";
-				SUPABASE_URL = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -509,10 +509,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		366295DE229B72E043543D52 /* supabase-swift */ = {
+		75E21CC7A3B87A980EBC0057 /* Supabase */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 46CFE5D6A6D13ECC76BF1CBC /* XCRemoteSwiftPackageReference "supabase-swift" */;
-			productName = "supabase-swift";
+			productName = Supabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

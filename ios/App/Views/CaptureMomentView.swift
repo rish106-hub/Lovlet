@@ -6,6 +6,7 @@ struct CaptureMomentView: View {
     @StateObject private var viewModel = CaptureViewModel()
     @State private var selectedPhoto: PhotosPickerItem?
     @State private var image: UIImage?
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack(spacing: 14) {
@@ -42,6 +43,9 @@ struct CaptureMomentView: View {
             }
         }
         .padding()
+        .onChange(of: viewModel.uploadSuccess) {
+            if viewModel.uploadSuccess { dismiss() }
+        }
         .task(id: selectedPhoto) {
             guard let selectedPhoto else { return }
             if let data = try? await selectedPhoto.loadTransferable(type: Data.self) {

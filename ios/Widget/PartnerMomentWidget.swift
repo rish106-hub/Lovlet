@@ -6,18 +6,6 @@ private enum WidgetConfig {
     static let cacheFile = SharedConstants.widgetCacheFile
 }
 
-private struct WidgetMoment: Codable {
-    let text: String
-    let imageURL: String
-    let createdAt: Date
-}
-
-private enum WidgetMomentState: Codable {
-    case noPair
-    case noMoment
-    case moment(WidgetMoment)
-}
-
 private enum WidgetCacheReader {
     static func read() -> WidgetMomentState {
         guard let container = FileManager.default.containerURL(

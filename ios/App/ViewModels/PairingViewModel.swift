@@ -56,4 +56,15 @@ final class PairingViewModel: ObservableObject {
             WidgetCacheStore.save(.noPair)
         }
     }
+
+#if DEBUG
+    func useDummyPair() {
+        pair = Pair(
+            id: UUID(uuidString: "00000000-0000-0000-0000-000000000001")!,
+            user1ID: UUID(uuidString: "00000000-0000-0000-0000-000000000002")!,
+            user2ID: UUID(uuidString: "00000000-0000-0000-0000-000000000003")!,
+            createdAt: Date()
+        )
+    }
+#endif
 }

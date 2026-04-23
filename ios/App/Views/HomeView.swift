@@ -69,6 +69,18 @@ struct HomeView: View {
                 Button("Unlink pair", role: .destructive) {
                     Task { await pairingViewModel.unlinkPair() }
                 }
+
+#if DEBUG
+                Divider()
+                Button("⚡ Write dummy widget data") {
+                    WidgetCacheStore.save(.moment(WidgetMoment(
+                        text: "Test moment from dev bypass",
+                        imageURL: "https://picsum.photos/400/300",
+                        createdAt: Date()
+                    )))
+                }
+                .foregroundStyle(.orange)
+#endif
             }
             .padding()
             .navigationTitle("Latest Moment")

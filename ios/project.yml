@@ -9,14 +9,13 @@ configs:
 configFiles:
   Debug: Config/Secrets.xcconfig
   Release: Config/Secrets.xcconfig
-settingGroups:
-  sharedSecrets:
-    SUPABASE_URL: ""
-    SUPABASE_ANON_KEY: ""
 targets:
   CouplesMVP:
     type: application
     platform: iOS
+    configFiles:
+      Debug: Config/Secrets.xcconfig
+      Release: Config/Secrets.xcconfig
     sources:
       - App
     info:
@@ -24,7 +23,7 @@ targets:
       properties:
         CFBundleDisplayName: CouplesMVP
         UILaunchScreen: {}
-        SUPABASE_URL: $(SUPABASE_URL)
+        SUPABASE_URL: "https://$(SUPABASE_URL)"
         SUPABASE_ANON_KEY: $(SUPABASE_ANON_KEY)
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
@@ -35,12 +34,12 @@ targets:
           - group.com.example.couples
     dependencies:
       - package: supabase-swift
+        product: Supabase
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.example.couplesmvp
         TARGETED_DEVICE_FAMILY: "1,2"
-      groups:
-        - sharedSecrets
+        CODE_SIGN_IDENTITY: "Apple Development"
 
   PartnerMomentWidgetExtension:
     type: app-extension
@@ -67,3 +66,14 @@ packages:
   supabase-swift:
     url: https://github.com/supabase/supabase-swift.git
     from: 2.0.0
+
+schemes:
+  CouplesMVP:
+    build:
+      targets:
+        CouplesMVP: all
+        PartnerMomentWidgetExtension: all
+    run:
+      config: Debug
+    archive:
+      config: Release

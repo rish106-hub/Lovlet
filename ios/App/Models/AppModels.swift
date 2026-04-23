@@ -32,22 +32,6 @@ struct Moment: Codable, Identifiable {
     }
 }
 
-struct InviteCodeResponse: Decodable {
-    let createPair: String
-
-    enum CodingKeys: String, CodingKey {
-        case createPair = "create_pair"
-    }
-}
-
-struct JoinPairResponse: Decodable {
-    let joinPair: UUID
-
-    enum CodingKeys: String, CodingKey {
-        case joinPair = "join_pair"
-    }
-}
-
 enum WidgetMomentState: Codable {
     case noPair
     case noMoment

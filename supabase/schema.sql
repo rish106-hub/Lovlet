@@ -15,8 +15,7 @@ create table if not exists public.pairs (
   user1_id uuid not null references public.users(id) on delete cascade,
   user2_id uuid not null references public.users(id) on delete cascade,
   created_at timestamptz not null default now(),
-  constraint pairs_distinct_users check (user1_id <> user2_id),
-  constraint pairs_unique_ordered unique (least(user1_id, user2_id), greatest(user1_id, user2_id))
+  constraint pairs_distinct_users check (user1_id <> user2_id)
 );
 
 create table if not exists public.moments (
@@ -40,6 +39,8 @@ create table if not exists public.invite_codes (
 
 create index if not exists moments_pair_created_at_idx on public.moments(pair_id, created_at desc);
 create index if not exists invite_codes_created_by_idx on public.invite_codes(created_by);
+create unique index if not exists pairs_unique_ordered_idx
+on public.pairs ((least(user1_id, user2_id)), (greatest(user1_id, user2_id)));
 
 -- Guarantees each user can belong to at most one pair total.
 create or replace function public.assert_user_has_no_pair(user_id uuid)
@@ -124,7 +125,7 @@ begin
   set consumed_at = now()
   where created_by = me and consumed_at is null and expires_at > now();
 
-  new_code := upper(substr(encode(gen_random_bytes(6), 'hex'), 1, 8));
+  new_code := upper(substr(replace(gen_random_uuid()::text, '-', ''), 1, 8));
 
   insert into public.invite_codes(code, created_by, expires_at)
   values (new_code, me, now() + make_interval(mins => invite_ttl_minutes));
@@ -253,25 +254,35 @@ alter table public.moments enable row level security;
 alter table public.invite_codes enable row level security;
 
 -- USERS RLS
-create policy if not exists "users_select_self"
+drop policy if exists "users_select_self" on public.users;
+create policy "users_select_self"
 on public.users for select
 using (id = auth.uid());
 
-create policy if not exists "users_insert_self"
+drop policy if exists "users_insert_self" on public.users;
+create policy "users_insert_self"
 on public.users for insert
 with check (id = auth.uid());
 
+drop policy if exists "users_update_self" on public.users;
+create policy "users_update_self"
+on public.users for update
+using (id = auth.uid());
+
 -- PAIRS RLS
-create policy if not exists "pairs_select_own"
+drop policy if exists "pairs_select_own" on public.pairs;
+create policy "pairs_select_own"
 on public.pairs for select
 using (public.is_in_pair(pairs, auth.uid()));
 
-create policy if not exists "pairs_delete_own"
+drop policy if exists "pairs_delete_own" on public.pairs;
+create policy "pairs_delete_own"
 on public.pairs for delete
 using (public.is_in_pair(pairs, auth.uid()));
 
 -- MOMENTS RLS
-create policy if not exists "moments_select_own_pair"
+drop policy if exists "moments_select_own_pair" on public.moments;
+create policy "moments_select_own_pair"
 on public.moments for select
 using (
   exists (
@@ -281,7 +292,8 @@ using (
   )
 );
 
-create policy if not exists "moments_insert_own_pair_only"
+drop policy if exists "moments_insert_own_pair_only" on public.moments;
+create policy "moments_insert_own_pair_only"
 on public.moments for insert
 with check (
   sender_id = auth.uid()
@@ -293,11 +305,13 @@ with check (
 );
 
 -- INVITE CODES RLS
-create policy if not exists "invite_codes_select_self"
+drop policy if exists "invite_codes_select_self" on public.invite_codes;
+create policy "invite_codes_select_self"
 on public.invite_codes for select
 using (created_by = auth.uid() or consumed_by = auth.uid());
 
-create policy if not exists "invite_codes_insert_self"
+drop policy if exists "invite_codes_insert_self" on public.invite_codes;
+create policy "invite_codes_insert_self"
 on public.invite_codes for insert
 with check (created_by = auth.uid());
 
@@ -307,7 +321,8 @@ insert into storage.buckets (id, name, public)
 values ('moments', 'moments', false)
 on conflict (id) do nothing;
 
-create policy if not exists "moments_storage_insert_own_pair"
+drop policy if exists "moments_storage_insert_own_pair" on storage.objects;
+create policy "moments_storage_insert_own_pair"
 on storage.objects for insert
 to authenticated
 with check (
@@ -315,7 +330,8 @@ with check (
   and public.user_in_pair((split_part(name, '/', 1))::uuid, auth.uid())
 );
 
-create policy if not exists "moments_storage_select_own_pair"
+drop policy if exists "moments_storage_select_own_pair" on storage.objects;
+create policy "moments_storage_select_own_pair"
 on storage.objects for select
 to authenticated
 using (

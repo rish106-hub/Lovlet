@@ -10,6 +10,6 @@ enum ImageCompression {
             guard let next = image.jpegData(compressionQuality: quality) else { break }
             data = next
         }
-        return data.count <= maxBytes ? data : data
+        return data
     }
 }
