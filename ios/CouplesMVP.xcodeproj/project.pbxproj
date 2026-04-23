@@ -23,6 +23,7 @@
 		9002591A597716DD6C8BF18C /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6EE32D28A19A20DB72EE6 /* SharedConstants.swift */; };
 		A1F35F3388F8F38EB1235AA1 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 75E21CC7A3B87A980EBC0057 /* Supabase */; };
 		A9F6BE33B42B51CD06E9BA93 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A2D200C7CF4276D9B0C8E /* RootView.swift */; };
+		6B7ED1D2D5124D14AC109C1E /* WidgetOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FBD3CF7E24473C825F50A2 /* WidgetOnboardingView.swift */; };
 		B43507467F412409F6CFC80D /* PartnerMomentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51EE2AFCB51AAEC02CA7A7B /* PartnerMomentWidget.swift */; };
 		BE00D5B92AFDE05AE6153D97 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8068F0452F2998DC05BA729A /* AuthViewModel.swift */; };
 		D06BBD355190E85DDBA7A001 /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636695978DC1CCF10DCAA8D2 /* SupabaseService.swift */; };
@@ -46,6 +47,7 @@
 		87F174263E31D9BD7A31274A /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
 		9DE6EE32D28A19A20DB72EE6 /* SharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
 		AE7A2D200C7CF4276D9B0C8E /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		55FBD3CF7E24473C825F50A2 /* WidgetOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetOnboardingView.swift; sourceTree = "<group>"; };
 		AF81A50023EC9CAE1FBEFCB2 /* PairingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingViewModel.swift; sourceTree = "<group>"; };
 		B92F3F75C2D51AA6AC5D9C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA91AD0F247729F631E64A72 /* CouplesMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouplesMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,7 @@
 				1093B7D5C381BFD24B64C67D /* LoginView.swift */,
 				87F174263E31D9BD7A31274A /* PairingView.swift */,
 				AE7A2D200C7CF4276D9B0C8E /* RootView.swift */,
+				55FBD3CF7E24473C825F50A2 /* WidgetOnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				51461E814C3D131FE2E57B23 /* PairingView.swift in Sources */,
 				F6E845D547644830421E3FC0 /* PairingViewModel.swift in Sources */,
 				A9F6BE33B42B51CD06E9BA93 /* RootView.swift in Sources */,
+				6B7ED1D2D5124D14AC109C1E /* WidgetOnboardingView.swift in Sources */,
 				22EDBBEB076A39B0DC8968AA /* SharedConstants.swift in Sources */,
 				D06BBD355190E85DDBA7A001 /* SupabaseService.swift in Sources */,
 				646F91FBEFA42F82D2BCC12D /* WidgetCacheStore.swift in Sources */,
