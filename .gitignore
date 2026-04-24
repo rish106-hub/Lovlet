@@ -1,0 +1,39 @@
+# Xcode user state — machine-specific, never commit
+*.xcuserstate
+xcuserdata/
+
+# Xcode derived data & archives
+DerivedData/
+*.xcarchive
+
+# Xcode local settings
+*.xccheckout
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+
+# Build output
+build/
+*.o
+*.d
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# CocoaPods (not used here but common)
+Pods/
+
+# Secrets — never commit real credentials
+# ios/Config/Secrets.xcconfig  ← uncomment this once you have CI secrets management
