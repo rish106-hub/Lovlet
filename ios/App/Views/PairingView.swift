@@ -41,5 +41,8 @@ struct PairingView: View {
 #endif
         }
         .padding()
+        .onDisappear {
+            viewModel.stopPolling()
+        }
     }
 }

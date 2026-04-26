@@ -15,26 +15,27 @@
 		392C0DEAB14F54BDFE740D84 /* ImageCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B3DE48B47AD33CF11B38BC9 /* ImageCompression.swift */; };
 		51438381CDA2A1FDFBC8375F /* CaptureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C98E2C0C6BAC2DCDF937B68 /* CaptureViewModel.swift */; };
 		51461E814C3D131FE2E57B23 /* PairingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F174263E31D9BD7A31274A /* PairingView.swift */; };
+		596B5AAA70154A71B14AA783 /* PartnerMomentWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E77708400D0987DA6AD91245 /* PartnerMomentWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B2482A9ECD20FED5F791BEF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 126393BB3D6F167C42441D47 /* HomeView.swift */; };
 		5BCE54AD6A605F7996B38B3F /* CaptureMomentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B24458831B81569DF1ACB3 /* CaptureMomentView.swift */; };
 		60636D2CDFDB26CDC9F5685F /* CouplesMVPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EBB812B75FB807A824019 /* CouplesMVPApp.swift */; };
+		FA73AE9BAAAB14748B5F4549 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E1EA83F12D39216AAD62F1 /* AppDelegate.swift */; };
 		646F91FBEFA42F82D2BCC12D /* WidgetCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85B467951CF6A9F33717307 /* WidgetCacheStore.swift */; };
+		6B7ED1D2D5124D14AC109C1E /* WidgetOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FBD3CF7E24473C825F50A2 /* WidgetOnboardingView.swift */; };
 		848A7812B748E4EF3DC5DF51 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628D6374D8944F68C6540C91 /* HomeViewModel.swift */; };
 		9002591A597716DD6C8BF18C /* SharedConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE6EE32D28A19A20DB72EE6 /* SharedConstants.swift */; };
 		A1F35F3388F8F38EB1235AA1 /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = 75E21CC7A3B87A980EBC0057 /* Supabase */; };
 		A9F6BE33B42B51CD06E9BA93 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7A2D200C7CF4276D9B0C8E /* RootView.swift */; };
-		6B7ED1D2D5124D14AC109C1E /* WidgetOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FBD3CF7E24473C825F50A2 /* WidgetOnboardingView.swift */; };
 		B43507467F412409F6CFC80D /* PartnerMomentWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51EE2AFCB51AAEC02CA7A7B /* PartnerMomentWidget.swift */; };
 		BE00D5B92AFDE05AE6153D97 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8068F0452F2998DC05BA729A /* AuthViewModel.swift */; };
 		D06BBD355190E85DDBA7A001 /* SupabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636695978DC1CCF10DCAA8D2 /* SupabaseService.swift */; };
 		F6E845D547644830421E3FC0 /* PairingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF81A50023EC9CAE1FBEFCB2 /* PairingViewModel.swift */; };
-		596B5AAA70154A71B14AA783 /* PartnerMomentWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E77708400D0987DA6AD91245 /* PartnerMomentWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		D4D9480E451C47429E8B0401 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9BE808D665204DF7F1F058C5 /* Project */;
+			containerPortal = 9BE808D665204DF7F1F058C5 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 78769FE5F260E60781A7A532;
 			remoteInfo = PartnerMomentWidgetExtension;
@@ -61,10 +62,12 @@
 		1C98E2C0C6BAC2DCDF937B68 /* CaptureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureViewModel.swift; sourceTree = "<group>"; };
 		20E526021E912C6309560CE7 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		3A7EBB812B75FB807A824019 /* CouplesMVPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouplesMVPApp.swift; sourceTree = "<group>"; };
+		33E1EA83F12D39216AAD62F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45B18753DCFF8CD098DB4C41 /* CouplesMVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CouplesMVP.entitlements; sourceTree = "<group>"; };
 		46B24458831B81569DF1ACB3 /* CaptureMomentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureMomentView.swift; sourceTree = "<group>"; };
 		482C574AE1ED1DEF22E75827 /* AppModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModels.swift; sourceTree = "<group>"; };
 		4B3DE48B47AD33CF11B38BC9 /* ImageCompression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompression.swift; sourceTree = "<group>"; };
+		55FBD3CF7E24473C825F50A2 /* WidgetOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetOnboardingView.swift; sourceTree = "<group>"; };
 		628D6374D8944F68C6540C91 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		636695978DC1CCF10DCAA8D2 /* SupabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseService.swift; sourceTree = "<group>"; };
 		64009253953F6D2D7F63248E /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
@@ -72,7 +75,6 @@
 		87F174263E31D9BD7A31274A /* PairingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingView.swift; sourceTree = "<group>"; };
 		9DE6EE32D28A19A20DB72EE6 /* SharedConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedConstants.swift; sourceTree = "<group>"; };
 		AE7A2D200C7CF4276D9B0C8E /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
-		55FBD3CF7E24473C825F50A2 /* WidgetOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetOnboardingView.swift; sourceTree = "<group>"; };
 		AF81A50023EC9CAE1FBEFCB2 /* PairingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingViewModel.swift; sourceTree = "<group>"; };
 		B92F3F75C2D51AA6AC5D9C79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BA91AD0F247729F631E64A72 /* CouplesMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouplesMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +110,7 @@
 			children = (
 				45B18753DCFF8CD098DB4C41 /* CouplesMVP.entitlements */,
 				3A7EBB812B75FB807A824019 /* CouplesMVPApp.swift */,
+				33E1EA83F12D39216AAD62F1 /* AppDelegate.swift */,
 				B92F3F75C2D51AA6AC5D9C79 /* Info.plist */,
 				CA0B7197B61F823918338420 /* Models */,
 				75DF52D9CE2A1F503F92673E /* Services */,
@@ -284,6 +287,7 @@
 				5BCE54AD6A605F7996B38B3F /* CaptureMomentView.swift in Sources */,
 				51438381CDA2A1FDFBC8375F /* CaptureViewModel.swift in Sources */,
 				60636D2CDFDB26CDC9F5685F /* CouplesMVPApp.swift in Sources */,
+				FA73AE9BAAAB14748B5F4549 /* AppDelegate.swift in Sources */,
 				5B2482A9ECD20FED5F791BEF /* HomeView.swift in Sources */,
 				848A7812B748E4EF3DC5DF51 /* HomeViewModel.swift in Sources */,
 				392C0DEAB14F54BDFE740D84 /* ImageCompression.swift in Sources */,
@@ -313,6 +317,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Widget/PartnerMomentWidget.entitlements;
+				DEVELOPMENT_TEAM = KJN663PJPP;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -458,6 +463,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/CouplesMVP.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = KJN663PJPP;
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -473,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Widget/PartnerMomentWidget.entitlements;
+				DEVELOPMENT_TEAM = KJN663PJPP;
 				INFOPLIST_FILE = Widget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -493,6 +500,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = App/CouplesMVP.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				DEVELOPMENT_TEAM = KJN663PJPP;
 				INFOPLIST_FILE = App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

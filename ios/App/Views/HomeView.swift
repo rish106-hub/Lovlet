@@ -84,9 +84,13 @@ struct HomeView: View {
             }
             .padding()
             .navigationTitle("Latest Moment")
-            .task {
+            .onAppear {
                 homeViewModel.loadCached()
-                await homeViewModel.refresh(pairID: pair.id)
+                homeViewModel.subscribeToMoments(pairID: pair.id)
+                Task { await homeViewModel.refresh(pairID: pair.id) }
+            }
+            .onDisappear {
+                homeViewModel.unsubscribe()
             }
         }
     }

@@ -8,6 +8,7 @@ final class HomeViewModel: ObservableObject {
     @Published var errorMessage: String?
 
     private let service = SupabaseService.shared
+    private var realtimeTask: Task<Void, Never>?
 
     func loadCached() {
         let state = WidgetCacheStore.read()
@@ -24,28 +25,53 @@ final class HomeViewModel: ObservableObject {
         do {
             latestMoment = try await service.fetchLatestMomentFromPartner(pairID: pairID)
             if let moment = latestMoment {
-                WidgetCacheStore.save(
-                    .moment(
-                        WidgetMoment(
-                            text: moment.text,
-                            imageURL: moment.imageURL,
-                            createdAt: moment.createdAt
-                        )
-                    )
-                )
-                cachedWidgetMoment = WidgetMoment(
+                let widgetMoment = WidgetMoment(
                     text: moment.text,
                     imageURL: moment.imageURL,
                     createdAt: moment.createdAt
                 )
+                WidgetCacheStore.save(.moment(widgetMoment))
+                cachedWidgetMoment = widgetMoment
             } else {
                 WidgetCacheStore.save(.noMoment)
                 cachedWidgetMoment = nil
             }
         } catch {
             errorMessage = error.localizedDescription
-            // Keep showing cached moment in poor network conditions.
             loadCached()
         }
+    }
+
+    // Called by AppDelegate for background fetch and silent push — no UI state side-effects.
+    static func backgroundRefresh(pairID: UUID) async {
+        do {
+            let moment = try await SupabaseService.shared.fetchLatestMomentFromPartner(pairID: pairID)
+            if let moment {
+                WidgetCacheStore.save(.moment(WidgetMoment(
+                    text: moment.text,
+                    imageURL: moment.imageURL,
+                    createdAt: moment.createdAt
+                )))
+            }
+        } catch {
+            // Background refresh best-effort; errors are silent.
+        }
+    }
+
+    func subscribeToMoments(pairID: UUID) {
+        realtimeTask?.cancel()
+        realtimeTask = Task {
+            let stream = await service.partnerMomentStream(pairID: pairID)
+            for await _ in stream {
+                guard !Task.isCancelled else { break }
+                await refresh(pairID: pairID)
+            }
+        }
+    }
+
+    func unsubscribe() {
+        realtimeTask?.cancel()
+        realtimeTask = nil
+        Task { await service.unsubscribeFromPartnerMoments() }
     }
 }

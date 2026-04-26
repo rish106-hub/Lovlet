@@ -29,17 +29,20 @@ final class CaptureViewModel: ObservableObject {
 #endif
 
         do {
-            try await service.uploadMoment(image: image, text: text, pairID: pairID)
+            // Step 1: upload image — only ever done once.
+            let imagePath = try await service.uploadMomentImage(image, pairID: pairID)
+
+            // Step 2: save DB record — retry once on failure (image already uploaded).
+            do {
+                try await service.saveMomentRecord(imagePath: imagePath, text: text)
+            } catch {
+                try await service.saveMomentRecord(imagePath: imagePath, text: text)
+            }
+
             text = ""
             uploadSuccess = true
         } catch {
-            do {
-                try await service.uploadMoment(image: image, text: text, pairID: pairID)
-                text = ""
-                uploadSuccess = true
-            } catch {
-                errorMessage = error.localizedDescription
-            }
+            errorMessage = error.localizedDescription
         }
     }
 }

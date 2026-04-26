@@ -7,7 +7,7 @@ create extension if not exists "pgcrypto";
 -- (for this flow, each device uses anonymous auth).
 create table if not exists public.users (
   id uuid primary key references auth.users(id) on delete cascade,
-  created_at timestamptz not null default now()
+created_at timestamptz not null default now()
 );
 
 create table if not exists public.pairs (
